@@ -1,0 +1,28 @@
+      <div class="row product-show" >
+        <div class="col-md-3">
+          <%= image_tag(@product.picture_url, :width => 200) if @product.picture.present? %>
+        </div>
+
+        <div class="col-md-9">
+          <h2><%= @product.product_name %></h2>
+          <p><b>Category: </b><%= @product.category.name %></p>
+          <p><b>Brand: </b><%= @product.brand %></p>
+          <p><b>Price(RM): </b><%= @product.price %></p>
+          <p><b>Stock: </b><%= @product.stock %></p>
+          <p><b>Description: </b><%= @product.descrption %></p>
+          <p><b>Halal Certificate: </b><%= @product.halal_cert %></p>
+          <p><b>KKM Certificate: </b><%= @product.kkm_cert %></p>
+          <p><b>SIRIM Certificate: </b><%= @product.sirim_cert %></p>
+          
+          
+          <% if user_signed_in? %>
+            <% if @product.user_id == current_user.id %>
+                <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-xs btn-primary" %>
+                <%= link_to 'Destroy', @product, data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-xs btn-danger" %>
+            <% end %>
+          <% end %>
+          <%= link_to 'Back', products_path, class:"btn btn-xs btn-success"%>
+        </div>
+      </div>
+  
+

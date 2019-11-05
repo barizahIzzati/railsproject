@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_name: MyString
+  brand: MyString
+  picture: MyString
+  price: 1.5
+  stock: 1
+  descrption: MyText
+  halal_cert: MyString
+  kkm_cert: MyString
+  sirim_cert: MyString
+
+two:
+  product_name: MyString
+  brand: MyString
+  picture: MyString
+  price: 1.5
+  stock: 1
+  descrption: MyText
+  halal_cert: MyString
+  kkm_cert: MyString
+  sirim_cert: MyString

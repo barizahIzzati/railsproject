@@ -1,0 +1,26 @@
+<div class="col-md-6 col-md-offset-3">
+    <div class="new-product-form">
+        <h1>Company Details</h1>
+
+        <p><b>Company Name: </b><%= @company.company_name %></p>
+        <p><b>Register No: </b><%= @company.register_no %></p>
+        <p><b>Address: </b><%= @company.address %></p>
+        <p><b>City: </b><%= @company.city %></p>
+        <p><b>State: </b><%= @company.state %></p>
+        <p><b>Postcode: </b><%= @company.postcode %></p>
+        <p><b>Phone No: </b><%= @company.phone_no %></p>
+        <p><b>Fax: </b><%= @company.fax %></p>
+        <p><b>Email: </b><%= @company.email %></p>
+        <p><strong>Website: </strong><%= @company.website %></p>
+
+
+        <% if user_signed_in? %>
+            <% if @company.user_id == current_user.id %>
+                <%= link_to 'Edit', edit_company_path(@company), class:"btn btn-xs btn-primary" %>
+                <%= link_to 'Destroy', @company, data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-xs btn-danger" %>
+            <% end %>
+        <% end %>
+        
+        <%= link_to 'Back', companies_path, class:"btn btn-xs btn-success"%>
+    </div>
+</div>

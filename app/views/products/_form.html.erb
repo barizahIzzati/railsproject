@@ -1,0 +1,15 @@
+<%= simple_form_for @product, :html => { :multipart => true} do |f| %>
+  
+  <%= f.input :product_name %>
+  <p><b>Category</b> <br> <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a Category") %>
+  <%= f.input :brand %>
+  <%= f.input :picture %>
+  <%= f.input :price %>
+  <%= f.input :stock %>
+  <%= f.input :descrption %>
+  <%= f.input :halal_cert %>
+  <%= f.input :kkm_cert %>
+  <%= f.input :sirim_cert %>
+  <%= f.submit %>
+
+<% end %>

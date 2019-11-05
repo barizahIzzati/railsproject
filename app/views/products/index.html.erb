@@ -1,0 +1,33 @@
+<div class="sidenav">
+  <% Category.all.each do |category| %>
+    <a class="<%= 'active' if params[:category] == category.name %>">
+      <%= link_to category.name, products_path(category: category.name)%>
+    </a>
+  <% end %>
+</div>
+
+<h1 class="current-category"><%= params[:category] %></h1>
+
+<% if @products.count == 0 %>
+  <h1>There are no product currently in this category</h1>
+<% else %> 
+
+<div class="row">
+  <%= form_tag products_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+    
+    <% @products.each do |product| %>
+      <div class="col-md-2">
+        <div class="product">
+            <a href="/products/<%= product.id %>">
+              <%= image_tag product.picture_url(:thumb) if product.picture.present? %>
+            </a>
+            <h5><%= link_to product.product_name, product %></h5>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+

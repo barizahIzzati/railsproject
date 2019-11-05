@@ -1,0 +1,23 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="new-product-form">
+
+    <h1>Editing Product</h1>
+
+      <%= simple_form_for @product, :html => { :multipart => true} do |f| %>
+          <%= f.input :product_name %>
+          <p><b>Category</b> <br> <%= f.select :category_id, @categories %>
+          <%= f.input :brand %>
+          <%= f.input :picture %>
+          <%= f.input :price %>
+          <%= f.input :stock %>
+          <%= f.input :descrption %>
+          <%= f.input :halal_cert %>
+          <%= f.input :kkm_cert %>
+          <%= f.input :sirim_cert %>
+          <%= f.submit %>
+        <% end %>
+        
+      <%= link_to 'Show', @product, class:"btn btn-xs btn-primary" %>
+      <%= link_to 'Back', products_path, class:"btn btn-xs btn-success"%>
+  </div>
+</div>
