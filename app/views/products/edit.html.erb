@@ -11,6 +11,7 @@
           <%= f.input :price %>
           <%= f.input :stock %>
           <%= f.input :descrption %>
+          <p><b>Status</b> <br> <%= f.select :status_id, @statuses %>
           <%= f.input :halal_cert %>
           <%= f.input :kkm_cert %>
           <%= f.input :sirim_cert %>

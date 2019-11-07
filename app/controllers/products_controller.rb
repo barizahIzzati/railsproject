@@ -25,11 +25,13 @@ class ProductsController < ApplicationController
   def new
     @product = current_user.products.build 
     @categories = Category.all.map{ |c| [c.name, c.id] }
+    @statuses = Status.all.map{ |c| [c.name, c.id] }
   end
 
   # GET /products/1/edit
   def edit
     @categories = Category.all.map{ |c| [c.name, c.id] }
+    @statuses = Status.all.map{ |c| [c.name, c.id] }
   end
 
   # POST /products
@@ -37,6 +39,7 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
     @product.category_id = params[:category_id]
+    @product.status_id = params[:status_id]
 
     respond_to do |format|
       if @product.save
@@ -53,6 +56,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     @product.category_id = params[:category_id]
+    @product.status_id = params[:status_id]
     respond_to do |format|
       
       if @product.update(product_params)
@@ -84,6 +88,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:product_name, :brand, :picture, :price, :stock, :descrption, :halal_cert, :kkm_cert, :sirim_cert, :category_id)
+      params.require(:product).permit(:product_name, :brand, :picture, :price, :stock, :descrption, :halal_cert, :kkm_cert, :sirim_cert, :category_id, :status_id)
     end
 end

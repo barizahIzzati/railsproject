@@ -1,2 +1,14 @@
-<h1>Pages#info</h1>
-<p>Find me in app/views/pages/info.html.erb</p>
+    <% @products.each do |product| %>
+      <div class="col-md-2">
+        <div class="product">
+            <a href="/products/<%= product.id %>">
+              <%= image_tag product.picture_url(:thumb) if product.picture.present? %>
+            </a>
+            <h5><%= link_to product.product_name, product %></h5>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
