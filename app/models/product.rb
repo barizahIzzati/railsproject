@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
     belongs_to :user
-    has_and_belongs_to_many :category
+    belongs_to :category
     has_many :comments
     belongs_to :status
     mount_uploader :picture, PictureUploader
