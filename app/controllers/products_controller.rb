@@ -26,26 +26,30 @@ class ProductsController < ApplicationController
     @product = current_user.products.build 
     @categories = Category.all.map{ |c| [c.name, c.id] }
     @statuses = Status.all.map{ |c| [c.name, c.id] }
+    @companies = Company.all.map{ |c| [c.company_name, c.id] } 
   end
 
   # GET /products/1/edit
   def edit
     @categories = Category.all.map{ |c| [c.name, c.id] }
     @statuses = Status.all.map{ |c| [c.name, c.id] }
+    @companies = Company.all.map{ |c| [c.company_name, c.id] }
   end
 
   # POST /products
   # POST /products.json
   def create
-    @product = current_user.products.build(product_params)
-    @product.category_id = params[:category_id]
-    @product.status_id = params[:status_id]
+    @product = current_user.products.new(product_params)
+    # @product.category_id = params[:category_id]
+    # @product.status_id = params[:status_id]
+    # @product.company_id = params[:company_id]
 
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
+        Rails.logger.debug @product.errors.inspect
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -88,6 +92,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:product_name, :brand, :picture, :price, :stock, :descrption, :halal_cert, :kkm_cert, :sirim_cert, :category_id, :status_id)
+      params.require(:product).permit(:product_name, :brand, :picture, :price, :stock, :descrption, :halal_cert, :kkm_cert, :sirim_cert, :category_id, :status_id, :company_id)
     end
 end

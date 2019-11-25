@@ -31,8 +31,8 @@
             <%# <li ><%= link_to 'Add product', new_product_path </li> %>
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></a>
-                <ul class="dropdown-menu" role="menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories</a>
+                <ul class="dropdown-menu">
                   <% Category.all.each do |category| %>
                     <li class="<%= 'active' if params[:category] == category.name %>">
                       <%= link_to category.name, products_path(category: category.name), class: "link" %>

@@ -3,15 +3,16 @@
 
     <h1>Editing Product</h1>
 
-      <%= simple_form_for @product, :html => { :multipart => true} do |f| %>
+      <%= simple_form_for @product do |f| %>
+          <p>Company: <%= f.collection_select :company_id, current_user.companies, :id, :company_name %> </p></br>
           <%= f.input :product_name %>
-          <p><b>Category</b> <br> <%= f.select :category_id, @categories %>
+          <%= f.input :category_id, collection: @categories %>
           <%= f.input :brand %>
           <%= f.input :picture %>
           <%= f.input :price %>
           <%= f.input :stock %>
           <%= f.input :descrption %>
-          <p><b>Status</b> <br> <%= f.select :status_id, @statuses %><br>
+          <%= f.input :status_id, collection: @statuses %>
           <%= f.submit %>
         <% end %>
         

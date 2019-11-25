@@ -25,6 +25,7 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = current_user.companies.build(company_params)
+    
 
     respond_to do |format|
       if @company.save

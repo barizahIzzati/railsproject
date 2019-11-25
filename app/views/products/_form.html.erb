@@ -1,13 +1,14 @@
-<%= simple_form_for @product, :html => { :multipart => true} do |f| %>
-  
+<%= simple_form_for @product do |f| %>
+  <%= f.error_notification %>
+  <p>Company: <%= f.collection_select :company_id, current_user.companies, :id, :company_name %> </p></br>
   <%= f.input :product_name %>
-  <p><b>Category</b> <br> <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a Category") %>
+  <%= f.input :category_id, collection: @categories %>
   <%= f.input :brand %>
+  <%= f.input :status_id, collection: @statuses %>
   <%= f.input :picture %>
   <%= f.input :price %>
   <%= f.input :stock %>
   <%= f.input :descrption %>
-  <p><b>Status</b> <br> <%= select_tag(:status_id, options_for_select(@statuses), :prompt => "Select a Status") %><br>
   <%= f.submit %>
 
 <% end %>
