@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-
+  permit_params :product_name, :brand, :picture, :price, :stock, :descrption, :halal_cert, :kkm_cert, :sirim_cert, :category_id, :status_id, :company_id
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
